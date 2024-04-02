@@ -33,7 +33,7 @@ wss.on('connection', (ws) => {
       ctx: getNumeroAleatorio(1, 100),
       endereco: getEnderecoAleatorio(),
       cidade: getCidadeAleatoria(),
-
+      gravidade: getGravidadeEvento()
 
     };
 
@@ -112,6 +112,11 @@ wss.on('connection', (ws) => {
     const indexAleatorio = getNumeroAleatorio(0, descricao.length - 1);
     return descricao[indexAleatorio];
   };
+  const getGravidadeEvento = () => {
+    const descricao = ['normal', 'grave'];
+    const indexAleatorio = getNumeroAleatorio(0, descricao.length - 1);
+    return descricao[indexAleatorio];
+  };
 
 
   const getSenha = () => {
@@ -175,7 +180,7 @@ wss.on('connection', (ws) => {
   // Inicie o envio
   enviaJsonEventos();
 
-  setInterval(enviaJsonEventos, 50000);
+  setInterval(enviaJsonEventos, 5000);
 
 
   const enviaJsonOcorrencias = () => {
@@ -185,7 +190,7 @@ wss.on('connection', (ws) => {
   // Inicie o envio
   enviaJsonOcorrencias();
 
-  setInterval(enviaJsonOcorrencias, 100000);
+  setInterval(enviaJsonOcorrencias, 5000);
 
 
 })
